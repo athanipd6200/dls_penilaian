@@ -1,30 +1,47 @@
 <template>
   <!-- component -->
-    <div class="bg-white rounded-2xl h-4/5 py-4 px-4 mx-4 shadow-lg grid grid-cols-2 gap-3">
-      <div class="w-full rounded-lg  ">
-        <img src="https://inacomp.net/wp-content/uploads/revslider/The7-fancy-title-business/rev-person-img.png" class="max-h-full px-15 py-8 relative z-10" alt="">
-        <div class="border-4 border-yellow-200 w-full relative top-5 bottom-2 left-2 right-2 z-0 max-h-full"></div>
-      </div>
-      <div class="w-full rounded-lg ">
-        <div class="w-full p-5 mt-10">
-            <div class="mb-5">
-              <h1 class="font-bold uppercase text-xl mb-5">Beri kami penilaian <br>untuk Meningkatkan Kualitas Pelayanan Kami</h1>
-              <p class="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Eos, voluptatum dolorum! Laborum blanditiis consequatur, voluptates, sint enim fugiat saepe, dolor fugit, magnam explicabo eaque quas id quo porro dolorum facilis... <a href="#" class="opacity-50 text-gray-900 hover:opacity-100 inline-block text-xs leading-none border-b border-gray-900">MORE <i class="mdi mdi-arrow-right"></i></a></p>
-            </div>
-            <div>
-              <div class="inline-block align-bottom">
-                <button class="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"><router-link :to="{ name: 'penilaian', params: { userId: 123 }}">Beri Nilai</router-link></button>
-              </div>
-            </div>
-        </div>
-      </div>
+    <div class="bg-white rounded-2xl dark:bg-gray-700 py-4 px-4 mx-4 shadow-lg">
+      <p class="text-4xl mb-4">Bagaimana menurut saudara/saudari mengenai informasi pelayanan yang diberikan <a class="italic">seperti: persyaratan, alur/prosedur, jangka waktu, dan biaya</a></p>
+      <star-rating 
+        v-model:rating="rating_pertama" 
+        :increment="0.5"
+        :star-size="90"
+        :animate="true" 
+        :active-border-color="['#F6546A','#a8c3c0']" 
+        :border-width="4" 
+        :star-points="[23,2, 14,17, 0,19, 10,34, 7,50, 23,43, 38,50, 36,34, 46,19, 31,17]" 
+        :active-on-click="true" 
+        :clearable="true" 
+        :padding="3"
+        :glow="10" 
+        glow-color="#ffd055"
+      ></star-rating>
+    </div>
+    <div class="bg-white rounded-2xl dark:bg-gray-700 py-4 px-4 mx-4 my-4 shadow-lg">
+    <p class="text-4xl mb-4">Bagaimana menurut saudara/saudari mengenai fasilitas/sarana pendukung layanan <a class="italic">seperti: persyaratan, alur/prosedur, jangka waktu, dan biayaseperti : ruang tunggu, perpustakaan, tempat parkir, toilet, dan lainnya?</a></p>
+      <star-rating 
+          v-model:rating="rating_kedua" 
+          :increment="0.5"
+          :star-size="90"
+          :animate="true" 
+          :active-border-color="['#F6546A','#a8c3c0']" 
+          :border-width="4" 
+          :star-points="[23,2, 14,17, 0,19, 10,34, 7,50, 23,43, 38,50, 36,34, 46,19, 31,17]" 
+          :active-on-click="true" 
+          :clearable="true" 
+          :padding="3"
+          :glow="10" 
+          glow-color="#ffd055"
+        ></star-rating>
     </div>
 </template>
 <script>
     import axios from 'axios'
+    import StarRating from 'vue-star-rating'
     export default {
         name : "MainLayout",
         components: {
+          StarRating,
         },
         data () {
             return {
